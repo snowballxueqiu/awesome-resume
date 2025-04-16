@@ -4,6 +4,8 @@ export interface PersonalInfo {
   name: string;
   title: string;
   bio: string;
+  skills: string[];
+  interests: string[];
 }
 
 export interface SocialLinks {

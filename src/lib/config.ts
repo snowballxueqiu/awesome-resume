@@ -4,7 +4,19 @@ export const resumeConfig: ResumeData = {
     personal_info: {
         name: "雪球 Snowball_233",
         title: "前端开发者 & 系统运维工程师",
-        bio: "一名热爱计算机技术的高中生，擅长使用AI辅助开发，专注于前端开发和系统运维(Docker等)"
+        bio: "一名热爱计算机技术的高中生，擅长使用AI辅助开发，专注于前端开发和系统运维(Docker 等)。拥有丰富的开源项目经验，曾在多个 Minecraft 服务器担任管理员兼技术职务。目前正在深入学习Rust语言，对 WebAssembly 和人工智能领域有浓厚兴趣。",
+        skills: [
+            "比较熟练掌握 JavaScript/TypeScript 和 React 框架",
+            "熟悉 Docker 容器化技术及CI/CD  流程",
+            "有 React、Rust 项目开发经验",
+            "较了解 Linux 系统管理和服务器运维"
+        ],
+        interests: [
+            "开源软件开发",
+            "自动化运维",
+            "人工智能",
+            "WebAssembly",
+        ]
     },
     social_links: {
         github: "https://github.com/SnowballXueQiu",
