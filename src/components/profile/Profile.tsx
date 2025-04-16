@@ -47,7 +47,7 @@ export function Profile({ personalInfo, skills }: ProfileProps) {
       )}
       {skills && (
         <Stack gap="sm" align="center">
-          <Text size="sm" c="dimmed">技术能力</Text>
+          <Text size="sm" c="dimmed">技术栈</Text>
           <Group gap="sm" justify="center">
             {skills.map((skill) => (
               <Badge 
