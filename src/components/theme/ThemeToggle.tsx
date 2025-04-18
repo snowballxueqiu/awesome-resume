@@ -1,10 +1,11 @@
 'use client';
 
 import { ActionIcon, useComputedColorScheme, useMantineColorScheme } from '@mantine/core';
-import { IconMoon, IconSun, IconFileExport } from '@tabler/icons-react';
+import { IconMoon, IconSun, IconFileExport, IconFileWord } from '@tabler/icons-react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { useState } from 'react';
+import { Document, Packer, Paragraph, TextRun } from 'docx';
 
 export function ThemeToggle() {
   const { setColorScheme } = useMantineColorScheme();
@@ -65,6 +66,42 @@ export function ThemeToggle() {
     }
   };
 
+  const handleExportDOCX = async () => {
+    if (exporting) return;
+    setExporting(true);
+
+    try {
+      const container = document.getElementById('resume-container');
+      if (!container) return;
+
+      const doc = new Document({
+        sections: [{
+          children: [
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: container.textContent || '',
+                  bold: true,
+                  size: 28
+                })
+              ]
+            })
+          ]
+        }]
+      });
+
+      const blob = await Packer.toBlob(doc);
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'resume.docx';
+      link.click();
+    } catch (error) {
+      console.error('导出失败:', error);
+    } finally {
+      setExporting(false);
+    }
+  };
+
   return (
     <div className="flex gap-2">
       <ActionIcon
@@ -87,6 +124,15 @@ export function ThemeToggle() {
         aria-label="Export to PDF"
       >
         <IconFileExport style={{ width: '70%', height: '70%' }} stroke={1.5} />
+      </ActionIcon>
+
+      <ActionIcon
+        onClick={handleExportDOCX}
+        variant="default"
+        size="xl"
+        aria-label="Export to Word"
+      >
+        <IconFileWord style={{ width: '70%', height: '70%' }} stroke={1.5} />
       </ActionIcon>
     </div>
   );
