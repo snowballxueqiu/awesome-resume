@@ -20,15 +20,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen py-8">
-      <Container size="md">
+      <Container id="resume-container" size="md">
         <Stack gap="xl">
           <Group justify="flex-end">
             <ThemeToggle />
           </Group>
           <Stack gap="xl">
             <Stack gap="md">
-              <Profile 
-                personalInfo={resumeData.personal_info} 
+              <Profile
+                personalInfo={resumeData.personal_info}
                 skills={resumeData.skills?.items}
               />
             </Stack>
