@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning data-mantine-color-scheme="light">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <MantineProvider>{children}</MantineProvider>
       </body>
