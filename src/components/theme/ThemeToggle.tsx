@@ -9,7 +9,7 @@ import { Document, Packer, Paragraph, TextRun } from 'docx';
 
 export function ThemeToggle() {
   const { setColorScheme } = useMantineColorScheme();
-  const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true });
+  const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: false });
 
   const [exporting, setExporting] = useState(false);
 
@@ -23,7 +23,7 @@ export function ThemeToggle() {
 
       const doc = new jsPDF('p', 'mm', 'a4');
       const canvas = await html2canvas(container, {
-        scale: 3,
+        scale: window.devicePixelRatio * 2,
         useCORS: true,
         logging: false,
         scrollX: 0,
@@ -31,9 +31,6 @@ export function ThemeToggle() {
         windowWidth: document.documentElement.scrollWidth,
         windowHeight: document.documentElement.scrollHeight,
         allowTaint: true,
-        letterRendering: true,
-        dpi: 300,
-        scale: window.devicePixelRatio * 2,
         ignoreElements: (element) => element.tagName === 'IFRAME'
       });
 
